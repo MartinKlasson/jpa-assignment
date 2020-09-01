@@ -21,7 +21,7 @@ public class Recipe {
 
     @OneToOne(fetch = FetchType.EAGER,
             cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-            @JoinColumn(name = "instruction_id")
+            @JoinColumn(name = "recipe_id")
     private RecipeInstruction recipeInstruction;
 
 

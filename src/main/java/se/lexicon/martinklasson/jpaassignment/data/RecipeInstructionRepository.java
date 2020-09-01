@@ -5,4 +5,5 @@ import se.lexicon.martinklasson.jpaassignment.entity.RecipeInstruction;
 
 public interface RecipeInstructionRepository extends CrudRepository<RecipeInstruction, Integer> {
 
+    RecipeInstruction findByInstructionId(String intructionId);
 }
