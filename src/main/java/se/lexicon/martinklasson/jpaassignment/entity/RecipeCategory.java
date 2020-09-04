@@ -14,9 +14,9 @@ public class RecipeCategory {
 
     @ManyToMany(fetch = FetchType.LAZY,
                 cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinTable(name = "recipe_category_category_recipes",
-            joinColumns = @JoinColumn(name = "recipe_category_category_id"),
-            inverseJoinColumns = @JoinColumn(name="category_recipes_recipe_id"))
+    @JoinTable()//(name = "recipe_category_category_recipes",
+            //joinColumns = @JoinColumn(name = "recipe_category_category_id"),
+            //inverseJoinColumns = @JoinColumn(name="category_recipes_recipe_id"))
     private List<Recipe> categoryRecipes;
 
     public RecipeCategory() {

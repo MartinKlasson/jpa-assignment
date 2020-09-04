@@ -1,9 +1,7 @@
 package se.lexicon.martinklasson.jpaassignment.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -54,4 +52,16 @@ public class Ingredient {
                 ", ingredientName='" + ingredientName + '\'' +
                 '}';
     }
+
+    @OneToMany(mappedBy = "ingredient")
+    private Collection<RecipeIngredient> recipeIngredient;
+
+    public Collection<RecipeIngredient> getRecipeIngredient() {
+        return recipeIngredient;
+    }
+
+    public void setRecipeIngredient(Collection<RecipeIngredient> recipeIngredient) {
+        this.recipeIngredient = recipeIngredient;
+    }
+
 }

@@ -5,12 +5,12 @@ import se.lexicon.martinklasson.jpaassignment.entity.Ingredient;
 
 import java.util.List;
 
-public interface
-
-IngredientRepository extends CrudRepository<Ingredient, Integer> {
+public interface IngredientRepository extends CrudRepository<Ingredient, Integer> {
 
     List<Ingredient> findByIngredientNameContainingIgnoreCase(String ingredientName);
 
     Ingredient findByIngredientName(String ingredientName);
+
+    List<Ingredient> findAll();
 
 }

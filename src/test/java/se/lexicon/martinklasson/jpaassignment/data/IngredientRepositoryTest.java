@@ -10,6 +10,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//TESTED AND SUCCEDED 2 Sept 2020-------------------------------------------------------
 @DataJpaTest
 class IngredientRepositoryTest {
 
@@ -29,10 +30,10 @@ class IngredientRepositoryTest {
         ingredientRepository.save(cream);
     }
 
-    //@Test
-    //void successfullyCreated(){
-        //assertEquals(4, ingredientRepository.findAll().size());
-    //}
+    @Test
+    void successfullyCreated(){
+        assertEquals(4, ingredientRepository.findAll().size());
+    }
 
     @Test
     void findByIngredientNameContainingIgnoreCase() {

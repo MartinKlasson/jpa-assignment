@@ -1,6 +1,7 @@
 package se.lexicon.martinklasson.jpaassignment.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
@@ -9,19 +10,19 @@ public class Recipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private int recipeId;
     private String recipeName;
 
 
-    @OneToMany(fetch = FetchType.LAZY,
-               cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
-               mappedBy = "recipeIngredient")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "recipe",
+               cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private List<RecipeIngredient> recipeIngredients;
 
 
     @OneToOne(fetch = FetchType.EAGER,
             cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-            @JoinColumn(name = "recipe_id")
+            @JoinColumn//(name = "recipe_id")
     private RecipeInstruction recipeInstruction;
 
 
@@ -45,9 +46,10 @@ public class Recipe {
 
 
     //Add and remove ingredient from recipe
-//    public void addIngredient(RecipeIngredient recipeIngredient){
-//        recipeIngredients.add(recipeIngredient);
-//    }
+   public void addIngredient(RecipeIngredient recipeIngredient){
+        recipeIngredients.add(recipeIngredient);
+        recipeIngredient.setRecipe(this);
+   }
 //
 //    public void removeIngredient(RecipeIngredient recipeIngredient){
 //        recipeIngredients.remove(recipeIngredient);
@@ -138,6 +140,17 @@ public class Recipe {
                 ", recipeInstruction=" + recipeInstruction +
                 ", recipeCategories=" + recipeCategories +
                 '}';
+    }
+
+    @OneToMany(mappedBy = "recipe")
+    private Collection<RecipeIngredient> recipeIngredient;
+
+    public Collection<RecipeIngredient> getRecipeIngredient() {
+        return recipeIngredient;
+    }
+
+    public void setRecipeIngredient(Collection<RecipeIngredient> recipeIngredient) {
+        this.recipeIngredient = recipeIngredient;
     }
 }
 

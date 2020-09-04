@@ -19,7 +19,7 @@ public class RecipeIngredient {
     //What should it be? OneToMany gives error: 'OneToMany attribute type should be a container'
     @ManyToOne(fetch = FetchType.LAZY,
                 cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-                @JoinColumn(name = "recipe_ingredient_id")
+    @JoinColumn() //Måste vara namn + kolumn namn???
     private Ingredient ingredient;
 
     private double amount;
@@ -28,7 +28,7 @@ public class RecipeIngredient {
 
     @ManyToOne(fetch = FetchType.EAGER,
             cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "ingredient_id")
+    @JoinColumn()//Måste vara namn + kolumn namn???
     private Recipe recipe;
 
 

@@ -9,15 +9,17 @@ import java.util.List;
 
 public interface RecipeRepository extends CrudRepository<Recipe, Integer> {
 
+    //Recipe findByRecipeName(String recipeName);
+
     //Searching for recipe containing specific string
     List<Recipe> findAllByRecipeNameContainingIgnoreCase(String recipeNamePart);
 
     //Searching for recipes containing a specific ingredient
-    List<Recipe> findAllByRecipeIngredients_Ingredient_IngredientNameIgnoreCase(String ingredientName);
+    //List<Recipe> findAllByRecipeIngredients_Ingredient_IngredientNameIgnoreCase(String ingredientName);
 
     //Searching for recipes of a certain category
-    List<Recipe> findAllByRecipeCategories_RecipeCategoryIgnoreCase(String categoryName);
+    //List<Recipe> findAllByRecipeCategories_RecipeCategoryIgnoreCase(String categoryName);
 
     //Searching for recipes that match one or more categories
-    List<Recipe> findAllByRecipeCategories(List<RecipeCategory>  recipeCategories);
+    //List<Recipe> findAllByRecipeCategories(List<RecipeCategory>  recipeCategories);
 }
